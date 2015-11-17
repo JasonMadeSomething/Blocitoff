@@ -41,14 +41,5 @@ Rails.application.configure do
   
   config.action_mailer.default_url_options = { host: 'bloc-foundation-supersovietjesus.c9.io' }
   
-  config.action_mailer.delivery_method = :smtp
-  # SMTP setting for mailgun
-  config.action_mailer.smtp_settings = {
-    port: 587,
-    address: ENV['address'],
-    domain: ENV['domain'],
-    user_name: ENV['username'],
-    password: ENV['password'],
-    authentication: :plain
-  }
+ 
 end
