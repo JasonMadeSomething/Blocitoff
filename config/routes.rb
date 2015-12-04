@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   
   authenticated :user do
     root "users#show", as: :user_root
+    resources :users, only: [] do
+      resources :items, only: [:create]
+    end
   end
   
   root to: "welcome#home"

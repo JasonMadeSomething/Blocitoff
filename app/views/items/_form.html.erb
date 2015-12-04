@@ -1,0 +1,8 @@
+<h4>Add a task</h4>
+<%= form_for [user, item], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: "sr-only" %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter a new task" %>
+  </div>
+  <%= button_tag( class: "glyphicon glyphicon-plus btn btn-primary") do end %>
+<% end %>

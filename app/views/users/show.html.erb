@@ -1,0 +1,36 @@
+<div>
+  <h1>
+    <%= "#{@user.user_name}'s to do list" %> 
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <ul class="nav nav-tabs" id="task-tabs">
+      <li class="active"><a href="#active-tasks" data-target="#active-tasks" data-toggle="tab">Active Tasks</a></li>
+      <li><a href="#completed-tasks" data-target="#completed-tasks" data-toggle="tab">Completed Tasks</a></li>
+      <li><a href="#archived-tasks" data-target="#archived-tasks" data-toggle="tab">Archived Tasks</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="active-tasks">
+        <div class="js-active-tasks">
+          <%= render @user.items.active %>
+        </div>
+        <div class="new-task">
+          <%= render 'items/form', item: Item.new, user: @user %>
+        </div>
+      </div>
+      
+      <div class="tab-pane" id="completed-tasks">
+        <%= render @user.items.completed %>
+      </div>
+      
+      <div class="tab-pane" id="archived-tasks">
+        <%= render @user.items.archived %>
+      </div>      
+    </div>
+
+
+  </div>
+</div>

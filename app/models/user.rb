@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   validates :user_name, :email, uniqueness: true
   validates :email, length: { minimum: 3 }
   validates :user_name, length: { minimum: 1 }
+  
+  has_many :items
 end
