@@ -2,7 +2,15 @@
 <%= form_for [user, item], remote: true do |f| %>
   <div class="form-group">
     <%= f.label :name, class: "sr-only" %>
-    <%= f.text_field :name, class: "form-control", placeholder: "Enter a new task" %>
+    <div class="input-group">
+      <span class="input-group-btn">
+      <%= button_tag(class: 'btn btn-primary') do %>
+        <i class="glyphicon glyphicon-plus"></i>
+      <% end %>
+      </span>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter a new task" %>
+    </div>
+    
   </div>
-  <%= button_tag( class: "glyphicon glyphicon-plus btn btn-primary") do end %>
+
 <% end %>

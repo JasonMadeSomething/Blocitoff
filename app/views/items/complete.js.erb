@@ -1,9 +1,10 @@
 <% if @item.valid? %>
-  $('.js-active-tasks').append("<%= escape_javascript(render(@item)) %>");
+  $('#task-<%= @item.id %>').addClass("bg-success");
+  $('#task-<%= @item.id %> p').wrap("<strike>");
+  $('#task-<%= @item.id %>').delay(1000).slideUp('slow');
+  $('.js-completed-tasks').append("<%= escape_javascript(render(@item)) %>");
   $('.flash').prepend("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:notice] %></div>");
-  $('.new-task').html("<%= escape_javascript(render 'items/form', item: @new_item, user: @user) %>");
 <% else %>
   $('.flash').prepend("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:error] %></div>");
-  $('.new-task').html("<%= escape_javascript(render 'items/form', item: @item, user: @user) %>");
 <% end %>
 $('.alert').delay(5000).fadeOut();

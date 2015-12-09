@@ -5,4 +5,16 @@ class Item < ActiveRecord::Base
   before_save {self.state ||= :active }
   
   enum state: [:active, :completed, :archived]
+  
+  
+  def activate
+    self.state = :active
+    self.activated_at = Date.today
+    self.deactivated_at = nil
+  end
+  
+  def deactivate(new_state)
+    self.state = new_state
+    self.deactivated_at = Date.today
+  end
 end

@@ -14,20 +14,25 @@
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="active-tasks">
-        <div class="js-active-tasks">
-          <%= render @user.items.active %>
-        </div>
         <div class="new-task">
           <%= render 'items/form', item: Item.new, user: @user %>
         </div>
+        <div class="js-active-tasks">
+          <%= render @user.items.active %>
+        </div>
+
       </div>
       
       <div class="tab-pane" id="completed-tasks">
-        <%= render @user.items.completed %>
+        <div class="js-completed-tasks">
+          <%= render @user.items.completed %>
+        </div>
       </div>
       
       <div class="tab-pane" id="archived-tasks">
-        <%= render @user.items.archived %>
+        <div class="js-archived-tasks">
+          <%= render @user.items.archived %>
+        </div>
       </div>      
     </div>
 
