@@ -1,7 +1,7 @@
 <%= content_tag :div, class: "media", id: "task-#{item.id}" do %>
   <div class="media-body">
     <div class="btn-group pull-left" role="group">
-      <% if item.completed? || item.archived? %>
+      <% if inactive?(item) %>
         <%= link_to "", user_item_activate_path(current_user, item), class: 'glyphicon glyphicon-repeat', title: "Re-activate Task", method: :put, remote: true %> 
       <% else %>
         <%= link_to "", user_item_complete_path(current_user, item), class: 'glyphicon glyphicon-ok', title: "Complete Task", method: :put, remote: true %> |
@@ -9,5 +9,12 @@
       <% end %>
     </div>
     <p><%= item.name %></p>
+    <small class="pull-right">
+      <% if inactive?(item) %>
+        <%= "Will be deleted in #{time_to_delete(item.deactivated_at)}" %>
+      <% else %>
+        <%= "Will be archived in #{time_to_archive(item.activated_at)}" %>
+      <% end %>
+    </small>
   </div>
 <% end %>
