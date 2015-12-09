@@ -5,10 +5,10 @@ module ItemsHelper
   end
   
   def time_to_archive(activated_at)
-    distance_of_time_in_words(activated_at, activated_at + 7)
+    distance_of_time_in_words(Date.today, activated_at + 7)
   end
   
   def time_to_delete(deactivated_at)
-    distance_of_time_in_words(deactivated_at, deactivated_at + 30)
+    distance_of_time_in_words(Date.today, deactivated_at + 30)
   end
 end
