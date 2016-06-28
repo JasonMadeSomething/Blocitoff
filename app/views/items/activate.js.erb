@@ -1,5 +1,7 @@
 <% if @item.valid? %>
-  $('#task-<%= @item.id %>').slideUp('slow');
+  $('#task-<%= @item.id %>').delay(1000).slideUp('slow', function() {
+    $('#task-<%= @item.id %>').remove();
+  });
   $('.js-active-tasks').append("<%= escape_javascript(render(@item)) %>");
   $('.flash').prepend("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert'>&times;</button><%= flash[:notice] %></div>");
 <% else %>
